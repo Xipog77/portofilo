@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg-osg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="ceph-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#b91c1c"/>
+    </linearGradient>
+    <linearGradient id="os-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg-osg)"/>
+  <!-- Badges -->
+  <g transform="translate(60, 35)">
+    <rect width="180" height="32" rx="8" fill="url(#os-red)"/>
+    <text x="90" y="21" fill="#fff" font-family="Montserrat, sans-serif" font-weight="800" font-size="12" text-anchor="middle">OPENSTACK CLOUD</text>
+    <rect x="250" y="0" width="130" height="32" rx="8" fill="url(#ceph-red)"/>
+    <text x="315" y="21" fill="#fff" font-family="Montserrat, sans-serif" font-weight="800" font-size="12" text-anchor="middle">CEPH STORAGE</text>
+    <rect x="390" y="0" width="160" height="32" rx="8" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4" stroke-width="1"/>
+    <text x="470" y="21" fill="#38bdf8" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" text-anchor="middle">OVN SDN DVR</text>
+  </g>
+  <!-- Node Topology -->
+  <g transform="translate(60, 90)">
+    <!-- Control Node -->
+    <rect x="0" y="0" width="210" height="230" rx="12" fill="#1e293b" stroke="#e11d48" stroke-width="1.5"/>
+    <text x="105" y="30" fill="#f43f5e" font-family="Montserrat, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">openstack-control</text>
+    <text x="105" y="48" fill="#94a3b8" font-family="sans-serif" font-size="10" text-anchor="middle">IP: 10.0.0.10 (2 vCPU, 6GB)</text>
+    <g transform="translate(15, 65)">
+      <rect x="0" y="0" width="180" height="30" rx="6" fill="#0f172a"/>
+      <text x="90" y="20" fill="#cbd5e1" font-family="sans-serif" font-size="11" text-anchor="middle">Keystone + Glance</text>
+      <rect x="0" y="38" width="180" height="30" rx="6" fill="#0f172a"/>
+      <text x="90" y="58" fill="#cbd5e1" font-family="sans-serif" font-size="11" text-anchor="middle">Nova API + Scheduler</text>
+      <rect x="0" y="76" width="180" height="30" rx="6" fill="#0f172a"/>
+      <text x="90" y="96" fill="#cbd5e1" font-family="sans-serif" font-size="11" text-anchor="middle">Neutron Server (OVN DB)</text>
+      <rect x="0" y="114" width="180" height="30" rx="6" fill="#0f172a"/>
+      <text x="90" y="134" fill="#cbd5e1" font-family="sans-serif" font-size="11" text-anchor="middle">Ceph Monitor + Cinder</text>
+    </g>
+    <!-- Compute Node 1 -->
+    <rect x="235" y="0" width="210" height="230" rx="12" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+    <text x="340" y="30" fill="#38bdf8" font-family="Montserrat, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">openstack-compute-1</text>
+    <text x="340" y="48" fill="#94a3b8" font-family="sans-serif" font-size="10" text-anchor="middle">IP: 10.0.0.20 (KVM Nested)</text>
+    <g transform="translate(250, 65)">
+      <rect x="0" y="0" width="180" height="30" rx="6" fill="#0f172a"/>
+      <text x="90" y="20" fill="#cbd5e1" font-family="sans-serif" font-size="11" text-anchor="middle">Nova Compute + Libvirt</text>
+      <rect x="0" y="38" width="180" height="30" rx="6" fill="#0f172a"/>
+      <text x="90" y="58" fill="#38bdf8" font-family="sans-serif" font-size="11" text-anchor="middle">OVN Controller Agent</text>
+      <rect x="0" y="76" width="180" height="30" rx="6" fill="#0f172a"/>
+      <text x="90" y="96" fill="#10b981" font-family="sans-serif" font-size="11" text-anchor="middle">Game Server VM (Minecraft)</text>
+      <rect x="0" y="114" width="180" height="30" rx="6" fill="#0f172a"/>
+      <text x="90" y="134" fill="#cbd5e1" font-family="sans-serif" font-size="11" text-anchor="middle">Ceph OSD (10GB RBD)</text>
+    </g>
+    <!-- Compute Node 2 (Autoscale) -->
+    <rect x="470" y="0" width="210" height="230" rx="12" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+    <text x="575" y="30" fill="#34d399" font-family="Montserrat, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">openstack-compute-2</text>
+    <text x="575" y="48" fill="#94a3b8" font-family="sans-serif" font-size="10" text-anchor="middle">IP: 10.0.0.30 (Autoscaling)</text>
+    <g transform="translate(485, 65)">
+      <rect x="0" y="0" width="180" height="30" rx="6" fill="#0f172a"/>
+      <text x="90" y="20" fill="#cbd5e1" font-family="sans-serif" font-size="11" text-anchor="middle">Elastic Scaling Node</text>
+      <rect x="0" y="38" width="180" height="30" rx="6" fill="#0f172a"/>
+      <text x="90" y="58" fill="#38bdf8" font-family="sans-serif" font-size="11" text-anchor="middle">OVN Controller Agent</text>
+      <rect x="0" y="76" width="180" height="30" rx="6" fill="#0f172a"/>
+      <text x="90" y="96" fill="#10b981" font-family="sans-serif" font-size="11" text-anchor="middle">Dedicated Game VM 2</text>
+      <rect x="0" y="114" width="180" height="30" rx="6" fill="#0f172a"/>
+      <text x="90" y="134" fill="#cbd5e1" font-family="sans-serif" font-size="11" text-anchor="middle">Ceph OSD Disk Backup</text>
+    </g>
+  </g>
+  <g transform="translate(60, 340)">
+    <rect width="680" height="42" rx="8" fill="rgba(15, 23, 42, 0.85)" stroke="#334155"/>
+    <text x="20" y="26" fill="#94a3b8" font-family="sans-serif" font-size="12">Ansible 100% Tự Động Hóa • Flask Self-service Portal • Cloud-init One-Click Deploy • Geneve DVR</text>
+  </g>
+  <text x="400" y="420" fill="#f8fafc" font-family="Montserrat, sans-serif" font-weight="800" font-size="18" text-anchor="middle" letter-spacing="1">OPENSTACK FOR GAME HOSTING — VDT CLOUD PROJECT</text>
+</svg>
