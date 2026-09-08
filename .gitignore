@@ -1,0 +1,11 @@
+# Thư mục mẫu tham khảo và tài liệu thông tin thô
+Mẫu/
+Thông tin/
+
+# Hệ điều hành & Editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.log
