@@ -22,57 +22,51 @@
   <rect width="800" height="450" fill="url(#bg-caro)"/>
 
   <!-- Ambient Light Orbs -->
-  <circle cx="280" cy="180" r="140" fill="#0284c7" opacity="0.15" filter="url(#glow-neon)"/>
-  <circle cx="520" cy="220" r="140" fill="#e11d48" opacity="0.12" filter="url(#glow-neon)"/>
+  <circle cx="280" cy="225" r="160" fill="#0284c7" opacity="0.18" filter="url(#glow-neon)"/>
+  <circle cx="520" cy="225" r="160" fill="#e11d48" opacity="0.15" filter="url(#glow-neon)"/>
 
-  <!-- Center Caro Game Board Card -->
-  <g transform="translate(260, 60)">
+  <!-- Center Caro Game Board Card (Perfect Center) -->
+  <g transform="translate(245, 70)">
     <!-- Board Base Outer Glow -->
-    <rect x="0" y="0" width="280" height="280" rx="28" fill="rgba(15, 23, 42, 0.75)" stroke="rgba(56, 189, 248, 0.35)" stroke-width="2" filter="url(#glow-neon)"/>
+    <rect x="0" y="0" width="310" height="310" rx="32" fill="rgba(15, 23, 42, 0.75)" stroke="rgba(56, 189, 248, 0.4)" stroke-width="2.5" filter="url(#glow-neon)"/>
     
     <!-- Grid Lines -->
-    <g stroke="rgba(255, 255, 255, 0.12)" stroke-width="3" stroke-linecap="round">
-      <line x1="93" y1="24" x2="93" y2="256"/>
-      <line x1="187" y1="24" x2="187" y2="256"/>
-      <line x1="24" y1="93" x2="256" y2="93"/>
-      <line x1="24" y1="187" x2="256" y2="187"/>
+    <g stroke="rgba(255, 255, 255, 0.14)" stroke-width="3.5" stroke-linecap="round">
+      <line x1="103" y1="26" x2="103" y2="284"/>
+      <line x1="207" y1="26" x2="207" y2="284"/>
+      <line x1="26" y1="103" x2="284" y2="103"/>
+      <line x1="26" y1="207" x2="284" y2="207"/>
     </g>
 
     <!-- Caro Pieces: X and O -->
     <!-- X 1 (Top-Left) -->
-    <g transform="translate(46, 46)" filter="url(#glow-neon)">
-      <line x1="-22" y1="-22" x2="22" y2="22" stroke="url(#cyan-glow-c)" stroke-width="8" stroke-linecap="round"/>
-      <line x1="22" y1="-22" x2="-22" y2="22" stroke="url(#cyan-glow-c)" stroke-width="8" stroke-linecap="round"/>
+    <g transform="translate(51, 51)" filter="url(#glow-neon)">
+      <line x1="-25" y1="-25" x2="25" y2="25" stroke="url(#cyan-glow-c)" stroke-width="9" stroke-linecap="round"/>
+      <line x1="25" y1="-25" x2="-25" y2="25" stroke="url(#cyan-glow-c)" stroke-width="9" stroke-linecap="round"/>
     </g>
 
     <!-- O 1 (Top-Center) -->
-    <circle cx="140" cy="46" r="22" fill="none" stroke="url(#rose-glow-c)" stroke-width="7" filter="url(#glow-neon)"/>
+    <circle cx="155" cy="51" r="25" fill="none" stroke="url(#rose-glow-c)" stroke-width="8" filter="url(#glow-neon)"/>
 
     <!-- X 2 (Center) -->
-    <g transform="translate(140, 140)" filter="url(#glow-neon)">
-      <line x1="-26" y1="-26" x2="26" y2="26" stroke="#38bdf8" stroke-width="9" stroke-linecap="round"/>
-      <line x1="26" y1="-26" x2="-26" y2="26" stroke="#38bdf8" stroke-width="9" stroke-linecap="round"/>
+    <g transform="translate(155, 155)" filter="url(#glow-neon)">
+      <line x1="-30" y1="-30" x2="30" y2="30" stroke="#38bdf8" stroke-width="10" stroke-linecap="round"/>
+      <line x1="30" y1="-30" x2="-30" y2="30" stroke="#38bdf8" stroke-width="10" stroke-linecap="round"/>
     </g>
 
     <!-- O 2 (Center-Right) -->
-    <circle cx="234" cy="140" r="22" fill="none" stroke="url(#rose-glow-c)" stroke-width="7" filter="url(#glow-neon)"/>
+    <circle cx="259" cy="155" r="25" fill="none" stroke="url(#rose-glow-c)" stroke-width="8" filter="url(#glow-neon)"/>
 
     <!-- O 3 (Bottom-Left) -->
-    <circle cx="46" cy="234" r="22" fill="none" stroke="url(#rose-glow-c)" stroke-width="7" filter="url(#glow-neon)"/>
+    <circle cx="51" cy="259" r="25" fill="none" stroke="url(#rose-glow-c)" stroke-width="8" filter="url(#glow-neon)"/>
 
     <!-- X 3 (Bottom-Right) - Winning Line Accent -->
-    <g transform="translate(234, 234)" filter="url(#glow-neon)">
-      <line x1="-22" y1="-22" x2="22" y2="22" stroke="url(#cyan-glow-c)" stroke-width="8" stroke-linecap="round"/>
-      <line x1="22" y1="-22" x2="-22" y2="22" stroke="url(#cyan-glow-c)" stroke-width="8" stroke-linecap="round"/>
+    <g transform="translate(259, 259)" filter="url(#glow-neon)">
+      <line x1="-25" y1="-25" x2="25" y2="25" stroke="url(#cyan-glow-c)" stroke-width="9" stroke-linecap="round"/>
+      <line x1="25" y1="-25" x2="-25" y2="25" stroke="url(#cyan-glow-c)" stroke-width="9" stroke-linecap="round"/>
     </g>
 
     <!-- Winning Streak Glow Line (Diagonal) -->
-    <line x1="30" y1="30" x2="250" y2="250" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-dasharray="8,6" filter="url(#glow-neon)"/>
-  </g>
-
-  <!-- Title & Theme Badge -->
-  <g transform="translate(400, 385)">
-    <text x="0" y="0" fill="#f8fafc" font-family="Montserrat, sans-serif" font-weight="900" font-size="22" text-anchor="middle" letter-spacing="2">CAROUD &#8226; CỜ CARO TRỰC TUYẾN</text>
-    <text x="0" y="24" fill="#94a3b8" font-family="Poppins, sans-serif" font-weight="500" font-size="13" text-anchor="middle">Cloud-Native Microservices &#8226; Realtime WebSockets</text>
+    <line x1="30" y1="30" x2="280" y2="280" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" opacity="0.65" stroke-dasharray="10,6" filter="url(#glow-neon)"/>
   </g>
 </svg>

@@ -27,24 +27,23 @@
   <rect width="800" height="450" fill="url(#bg-care)"/>
 
   <!-- Ambient Care Aura Orbs -->
-  <circle cx="330" cy="180" r="140" fill="#e11d48" opacity="0.18" filter="url(#glow-hcare)"/>
-  <circle cx="480" cy="180" r="140" fill="#0891b2" opacity="0.16" filter="url(#glow-hcare)"/>
+  <circle cx="330" cy="225" r="160" fill="#e11d48" opacity="0.18" filter="url(#glow-hcare)"/>
+  <circle cx="480" cy="225" r="160" fill="#0891b2" opacity="0.16" filter="url(#glow-hcare)"/>
 
   <!-- Smart IoT Wireless Waves above House -->
   <g stroke="rgba(45, 212, 191, 0.35)" stroke-width="2.5" fill="none" stroke-linecap="round">
-    <path d="M 370,55 A 35,35 0 0,1 430,55"/>
-    <path d="M 355,42 A 55,55 0 0,1 445,42"/>
-    <path d="M 340,29 A 75,75 0 0,1 460,29"/>
-    <circle cx="400" cy="68" r="4" fill="#2dd4bf" filter="url(#glow-hcare)"/>
+    <path d="M 370,85 A 35,35 0 0,1 430,85"/>
+    <path d="M 355,72 A 55,55 0 0,1 445,72"/>
+    <path d="M 340,59 A 75,75 0 0,1 460,59"/>
+    <circle cx="400" cy="98" r="4" fill="#2dd4bf" filter="url(#glow-hcare)"/>
   </g>
 
-  <!-- Central Home Care Emblem -->
-  <g transform="translate(400, 185)">
+  <!-- Central Home Care Emblem (Centered & Scaled) -->
+  <g transform="translate(400, 225) scale(1.18)">
     <!-- Base Plate Aura -->
     <ellipse cx="0" cy="115" rx="150" ry="24" fill="#f43f5e" opacity="0.25" filter="url(#glow-hcare)"/>
 
     <!-- Protective Outer House Silhouette -->
-    <!-- Roof Peak at (0, -115), Eaves at (-145, -15) & (145, -15), Walls down to (-110, 105) & (110, 105) -->
     <path d="M 0,-115 
              L 145,-5 
              L 115,-5 
@@ -54,12 +53,11 @@
              L -145,-5 Z" 
           fill="url(#home-grad)" stroke="url(#cyan-care)" stroke-width="3" filter="url(#glow-hcare)"/>
 
-    <!-- Inner Protective Window / Shield Glow -->
+    <!-- Inner Protective Window -->
     <rect x="-95" y="10" width="190" height="85" rx="12" fill="rgba(15, 23, 42, 0.8)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
 
-    <!-- Medical Heart Symbol in the Center of Home -->
+    <!-- Medical Heart Symbol in Center -->
     <g transform="translate(0, 30)" filter="url(#glow-hcare)">
-      <!-- Large Beating Heart Base -->
       <path d="M 0,45 
                C -55,0 -70,-35 -50,-55 
                C -30,-75 0,-50 0,-30 
@@ -67,16 +65,12 @@
                C 70,-35 55,0 0,45 Z" 
             fill="url(#rose-heart)" stroke="#ffffff" stroke-width="2"/>
 
-      <!-- Heart Depth Highlight -->
       <path d="M -38,-50 C -25,-62 -5,-45 -2,-30 C -15,-30 -30,-38 -38,-50 Z" fill="#ffffff" opacity="0.4"/>
     </g>
 
     <!-- Glowing Active ECG Pulse / Heartbeat Lifeline across the Heart -->
     <g filter="url(#glow-hcare)">
-      <!-- Background ECG Guide Line -->
       <line x1="-120" y1="32" x2="120" y2="32" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2"/>
-      
-      <!-- Vivid ECG Pulse Wave -->
       <path d="M -120,32 
                L -55,32 
                L -42,32 
@@ -95,27 +89,22 @@
     <!-- Medical Cross Badge on the Rooftop Gable -->
     <g transform="translate(0, -60)" filter="url(#glow-hcare)">
       <circle cx="0" cy="0" r="18" fill="#0f172a" stroke="url(#cyan-care)" stroke-width="2"/>
-      <!-- Cross Horizontal & Vertical -->
       <rect x="-10" y="-3.5" width="20" height="7" rx="2" fill="#2dd4bf"/>
       <rect x="-3.5" y="-10" width="7" height="20" rx="2" fill="#2dd4bf"/>
     </g>
 
-    <!-- Vital Health Metric Pills on Sides -->
-    <!-- Left: SpO2 Pill -->
+    <!-- Vital Health Metric Pills on Sides (Purely Graphical) -->
+    <!-- Left: Oxygen / Vital Wave Graphic -->
     <g transform="translate(-70, 75)" filter="url(#glow-hcare)">
       <rect x="-24" y="-11" width="48" height="22" rx="11" fill="#0f172a" stroke="#2dd4bf" stroke-width="1.5"/>
-      <text x="0" y="4" fill="#2dd4bf" font-family="Montserrat, sans-serif" font-weight="900" font-size="10" text-anchor="middle">98%</text>
+      <circle cx="-10" cy="0" r="4" fill="#2dd4bf"/>
+      <circle cx="2" cy="0" r="3" fill="#2dd4bf" opacity="0.8"/>
+      <circle cx="12" cy="0" r="2" fill="#2dd4bf" opacity="0.6"/>
     </g>
-    <!-- Right: BPM Pill -->
+    <!-- Right: Vital Pulse Graphic -->
     <g transform="translate(70, 75)" filter="url(#glow-hcare)">
       <rect x="-24" y="-11" width="48" height="22" rx="11" fill="#0f172a" stroke="#fb7185" stroke-width="1.5"/>
-      <text x="0" y="4" fill="#fb7185" font-family="Montserrat, sans-serif" font-weight="900" font-size="10" text-anchor="middle">75 BPM</text>
+      <path d="M -14,0 L -8,0 L -4,-6 L 0,6 L 4,-3 L 8,0 L 14,0" fill="none" stroke="#fb7185" stroke-width="2" stroke-linecap="round"/>
     </g>
-  </g>
-
-  <!-- Title & Theme Badge -->
-  <g transform="translate(400, 385)">
-    <text x="0" y="0" fill="#f8fafc" font-family="Montserrat, sans-serif" font-weight="900" font-size="22" text-anchor="middle" letter-spacing="2">HCORAP &#8226; CHĂM SÓC SỨC KHỎE GIA ĐÌNH</text>
-    <text x="0" y="24" fill="#94a3b8" font-family="Poppins, sans-serif" font-weight="500" font-size="13" text-anchor="middle">Smart Home Care &#8226; IoT Vital Monitoring &#8226; SATLab UET Research</text>
   </g>
 </svg>

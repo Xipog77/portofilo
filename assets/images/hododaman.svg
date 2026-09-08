@@ -28,11 +28,11 @@
   <rect width="800" height="450" fill="url(#bg-tree)"/>
 
   <!-- Ambient Light Orbs -->
-  <circle cx="400" cy="170" r="160" fill="#10b981" opacity="0.16" filter="url(#glow-tree)"/>
-  <circle cx="400" cy="130" r="110" fill="#f59e0b" opacity="0.14" filter="url(#glow-tree)"/>
+  <circle cx="400" cy="210" r="180" fill="#10b981" opacity="0.18" filter="url(#glow-tree)"/>
+  <circle cx="400" cy="170" r="140" fill="#f59e0b" opacity="0.16" filter="url(#glow-tree)"/>
 
-  <!-- The Grand Heritage Family Tree Icon -->
-  <g transform="translate(400, 185)">
+  <!-- The Grand Heritage Family Tree Icon (Centered & Scaled) -->
+  <g transform="translate(400, 225) scale(1.18)">
     <!-- Base Circular Sacred Mandala Ring -->
     <circle cx="0" cy="0" r="135" fill="none" stroke="rgba(251, 191, 36, 0.2)" stroke-width="1.5" stroke-dasharray="4,6"/>
     <circle cx="0" cy="0" r="148" fill="none" stroke="rgba(52, 211, 153, 0.15)" stroke-width="1"/>
@@ -84,7 +84,7 @@
     </g>
 
     <!-- Lineage Generational Nodes (Family Tree Hierarchy) -->
-    <!-- Ancestor Top Node (Thủy Tổ) -->
+    <!-- Ancestor Top Node -->
     <g transform="translate(0, -135)" filter="url(#glow-tree)">
       <circle cx="0" cy="0" r="14" fill="#0f172a" stroke="url(#gold-leaf)" stroke-width="3"/>
       <circle cx="0" cy="0" r="6" fill="#fde047"/>
@@ -137,11 +137,5 @@
       <circle cx="-100" cy="-45" r="2"/>
       <circle cx="100" cy="-45" r="2"/>
     </g>
-  </g>
-
-  <!-- Title & Theme Badge -->
-  <g transform="translate(400, 385)">
-    <text x="0" y="0" fill="#f8fafc" font-family="Montserrat, sans-serif" font-weight="900" font-size="22" text-anchor="middle" letter-spacing="2">HỌ ĐỖ ĐẦM HÀ &#8226; CÂY GIA PHẢ TRUYỀN THỐNG</text>
-    <text x="0" y="24" fill="#94a3b8" font-family="Poppins, sans-serif" font-weight="500" font-size="13" text-anchor="middle">Phả Hệ Dòng Họ &#8226; Cội Nguồn Tổ Tiên &#8226; Lưu Giữ Văn Hóa Gia Tộc</text>
   </g>
 </svg>

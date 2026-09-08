@@ -32,11 +32,11 @@
   <rect width="800" height="450" fill="url(#bg-game)"/>
 
   <!-- Ambient Gamer Lighting -->
-  <circle cx="300" cy="180" r="140" fill="#9333ea" opacity="0.18" filter="url(#glow-game)"/>
-  <circle cx="500" cy="180" r="140" fill="#06b6d4" opacity="0.15" filter="url(#glow-game)"/>
+  <circle cx="300" cy="225" r="160" fill="#9333ea" opacity="0.2" filter="url(#glow-game)"/>
+  <circle cx="500" cy="225" r="160" fill="#06b6d4" opacity="0.16" filter="url(#glow-game)"/>
 
-  <!-- Iconic Gamepad / Controller -->
-  <g transform="translate(400, 185)">
+  <!-- Iconic Gamepad / Controller (Centered & Scaled) -->
+  <g transform="translate(400, 225) scale(1.18)">
     <!-- Base Plate Shadow / Glow -->
     <ellipse cx="0" cy="95" rx="150" ry="25" fill="#a855f7" opacity="0.25" filter="url(#glow-game)"/>
 
@@ -68,20 +68,20 @@
       <polygon points="22,0 16,-4 16,4" fill="#38bdf8"/>
     </g>
 
-    <!-- Right Action Buttons (Diamond Layout) -->
+    <!-- Right Action Buttons (Diamond Layout, purely graphical) -->
     <g transform="translate(75, -15)">
-      <!-- Top Button (Y) -->
-      <circle cx="0" cy="-24" r="10" fill="#1e293b" stroke="#facc15" stroke-width="2" filter="url(#glow-game)"/>
-      <text x="0" y="-20" fill="#facc15" font-family="Montserrat, sans-serif" font-weight="900" font-size="11" text-anchor="middle">Y</text>
-      <!-- Bottom Button (A) -->
-      <circle cx="0" cy="24" r="10" fill="#1e293b" stroke="#4ade80" stroke-width="2" filter="url(#glow-game)"/>
-      <text x="0" y="28" fill="#4ade80" font-family="Montserrat, sans-serif" font-weight="900" font-size="11" text-anchor="middle">A</text>
-      <!-- Left Button (X) -->
-      <circle cx="-24" cy="0" r="10" fill="#1e293b" stroke="url(#cyan-btn)" stroke-width="2" filter="url(#glow-game)"/>
-      <text x="-24" y="4" fill="#38bdf8" font-family="Montserrat, sans-serif" font-weight="900" font-size="11" text-anchor="middle">X</text>
-      <!-- Right Button (B) -->
-      <circle cx="24" cy="0" r="10" fill="#1e293b" stroke="url(#pink-btn)" stroke-width="2" filter="url(#glow-game)"/>
-      <text x="24" y="4" fill="#f472b6" font-family="Montserrat, sans-serif" font-weight="900" font-size="11" text-anchor="middle">B</text>
+      <!-- Top Button (Yellow) -->
+      <circle cx="0" cy="-24" r="10" fill="#1e293b" stroke="#facc15" stroke-width="2.5" filter="url(#glow-game)"/>
+      <circle cx="0" cy="-24" r="4.5" fill="#facc15"/>
+      <!-- Bottom Button (Green) -->
+      <circle cx="0" cy="24" r="10" fill="#1e293b" stroke="#4ade80" stroke-width="2.5" filter="url(#glow-game)"/>
+      <circle cx="0" cy="24" r="4.5" fill="#4ade80"/>
+      <!-- Left Button (Cyan) -->
+      <circle cx="-24" cy="0" r="10" fill="#1e293b" stroke="url(#cyan-btn)" stroke-width="2.5" filter="url(#glow-game)"/>
+      <circle cx="-24" cy="0" r="4.5" fill="#38bdf8"/>
+      <!-- Right Button (Pink) -->
+      <circle cx="24" cy="0" r="10" fill="#1e293b" stroke="url(#pink-btn)" stroke-width="2.5" filter="url(#glow-game)"/>
+      <circle cx="24" cy="0" r="4.5" fill="#f472b6"/>
     </g>
 
     <!-- Left Analog Thumbstick -->
@@ -101,7 +101,7 @@
     <!-- Center Home / Castle Shield Emblem -->
     <g transform="translate(0, -35)">
       <circle cx="0" cy="0" r="14" fill="#090d16" stroke="url(#purple-neon)" stroke-width="2" filter="url(#glow-game)"/>
-      <!-- Shield / Castle Emblem -->
+      <!-- Shield Emblem -->
       <path d="M -6,-7 L 6,-7 L 6,0 C 6,5 0,8 0,8 C 0,8 -6,5 -6,0 Z" fill="#c084fc"/>
     </g>
 
@@ -112,11 +112,5 @@
     <!-- Upper Bumpers (L1/R1) -->
     <path d="M -115,-76 C -95,-82 -60,-84 -42,-78" stroke="#a855f7" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
     <path d="M 42,-78 C 60,-84 95,-82 115,-76" stroke="#a855f7" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
-  </g>
-
-  <!-- Title & Theme Badge -->
-  <g transform="translate(400, 385)">
-    <text x="0" y="0" fill="#f8fafc" font-family="Montserrat, sans-serif" font-weight="900" font-size="22" text-anchor="middle" letter-spacing="2">DEFEND KINGDOM &#8226; GAMEPAD &amp; STRATEGY</text>
-    <text x="0" y="24" fill="#94a3b8" font-family="Poppins, sans-serif" font-weight="500" font-size="13" text-anchor="middle">Java OOP Architecture &#8226; Tower Defense Engine &#8226; Custom Physics</text>
   </g>
 </svg>

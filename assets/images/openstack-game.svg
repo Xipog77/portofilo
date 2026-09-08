@@ -17,7 +17,7 @@
       <stop offset="0%" stop-color="#1e293b"/>
       <stop offset="100%" stop-color="#0f172a"/>
     </linearGradient>
-    <linearGradient id="cube-right" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="cube-right" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#334155"/>
       <stop offset="100%" stop-color="#1e293b"/>
     </linearGradient>
@@ -35,11 +35,11 @@
   <rect width="800" height="450" fill="url(#bg-cloud-game)"/>
 
   <!-- Ambient Glow -->
-  <circle cx="320" cy="180" r="140" fill="#0284c7" opacity="0.2" filter="url(#glow-cgame)"/>
-  <circle cx="480" cy="180" r="140" fill="#16a34a" opacity="0.14" filter="url(#glow-cgame)"/>
+  <circle cx="320" cy="225" r="160" fill="#0284c7" opacity="0.22" filter="url(#glow-cgame)"/>
+  <circle cx="480" cy="225" r="160" fill="#16a34a" opacity="0.16" filter="url(#glow-cgame)"/>
 
-  <!-- High Availability Orbit Rings -->
-  <g transform="translate(400, 185)">
+  <!-- High Availability Orbit Rings & Isometric Cube (Centered & Scaled) -->
+  <g transform="translate(400, 225) scale(1.18)">
     <!-- Tilted Ellipse Orbits -->
     <ellipse cx="0" cy="0" rx="170" ry="70" fill="none" stroke="rgba(56, 189, 248, 0.25)" stroke-width="2" stroke-dasharray="6,8" transform="rotate(-15)"/>
     <ellipse cx="0" cy="0" rx="170" ry="70" fill="none" stroke="rgba(74, 222, 128, 0.2)" stroke-width="1.5" stroke-dasharray="4,6" transform="rotate(25)"/>
@@ -73,7 +73,6 @@
     <!-- Central Isometric 3D Game Server Cube -->
     <g transform="translate(0, -20)">
       <!-- Isometric Cube Top Face -->
-      <!-- Center (0, -35), Right (65, 0), Bottom (0, 35), Left (-65, 0) -->
       <polygon points="0,-75 65,-40 0,-5 -65,-40" fill="url(#cube-top)" stroke="#38bdf8" stroke-width="1.5" filter="url(#glow-cgame)"/>
 
       <!-- Isometric Cube Left Face -->
@@ -82,8 +81,7 @@
       <!-- Isometric Cube Right Face -->
       <polygon points="0,-5 65,-40 65,35 0,70" fill="url(#cube-right)" stroke="#0284c7" stroke-width="1.5"/>
 
-      <!-- Pixel Game Grid / Creeper-Voxel Style Pattern on Front Faces -->
-      <!-- Left Face Server Slots -->
+      <!-- Pixel Game Grid on Front Faces -->
       <g stroke="#38bdf8" stroke-width="1.5" fill="none" opacity="0.7">
         <line x1="-50" y1="-15" x2="-15" y2="3"/>
         <line x1="-50" y1="5" x2="-15" y2="23"/>
@@ -96,22 +94,15 @@
       <g transform="translate(32, 16)">
         <polygon points="-12,-15 12,-28 12,-10 -12,3" fill="#4ade80" opacity="0.6"/>
         <polygon points="-12,5 12,-8 12,10 -12,23" fill="#4ade80" opacity="0.8"/>
-        <!-- Gamepad cross on face -->
         <circle cx="0" cy="0" r="3" fill="#ffffff" filter="url(#glow-cgame)"/>
       </g>
 
-      <!-- Center Floating Neon Emblem (Gaming Joystick on Top Face) -->
+      <!-- Center Floating Neon Emblem (Joystick) -->
       <g transform="translate(0, -40)" filter="url(#glow-cgame)">
         <circle cx="0" cy="0" r="8" fill="#4ade80"/>
         <line x1="0" y1="0" x2="0" y2="-18" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
         <circle cx="0" cy="-22" r="7" fill="#f43f5e"/>
       </g>
     </g>
-  </g>
-
-  <!-- Title & Theme Badge -->
-  <g transform="translate(400, 385)">
-    <text x="0" y="0" fill="#f8fafc" font-family="Montserrat, sans-serif" font-weight="900" font-size="22" text-anchor="middle" letter-spacing="2">OPENSTACK GAME &#8226; CLOUD &amp; MÁY CHỦ GAME</text>
-    <text x="0" y="24" fill="#94a3b8" font-family="Poppins, sans-serif" font-weight="500" font-size="13" text-anchor="middle">OpenStack Cloud Platform &#8226; High Availability VM &#8226; Game Server Engine</text>
   </g>
 </svg>

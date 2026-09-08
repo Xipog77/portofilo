@@ -33,11 +33,11 @@
   <rect width="800" height="450" fill="url(#bg-lib)"/>
 
   <!-- Ambient Orbs -->
-  <circle cx="330" cy="180" r="140" fill="#10b981" opacity="0.16" filter="url(#glow-lib)"/>
-  <circle cx="480" cy="180" r="130" fill="#f59e0b" opacity="0.12" filter="url(#glow-lib)"/>
+  <circle cx="320" cy="225" r="160" fill="#10b981" opacity="0.18" filter="url(#glow-lib)"/>
+  <circle cx="480" cy="225" r="150" fill="#f59e0b" opacity="0.14" filter="url(#glow-lib)"/>
 
-  <!-- Iconic Open Book Display -->
-  <g transform="translate(400, 185)">
+  <!-- Iconic Open Book Display (Centered and Scaled) -->
+  <g transform="translate(400, 225) scale(1.18)">
     <!-- Aura Ring -->
     <ellipse cx="0" cy="30" rx="190" ry="60" fill="none" stroke="rgba(52, 211, 153, 0.25)" stroke-width="2" stroke-dasharray="6,8"/>
     
@@ -62,7 +62,7 @@
     <!-- Spine Binding Shadow -->
     <path d="M-5,-42 Q0,25 0,25 Q0,25 5,-42 Z" fill="#065f46" opacity="0.7"/>
 
-    <!-- Text / Content Lines on Left Page -->
+    <!-- Content Lines on Left Page -->
     <g stroke="#64748b" stroke-width="3" stroke-linecap="round" opacity="0.65">
       <line x1="-115" y1="-45" x2="-25" y2="-32"/>
       <line x1="-115" y1="-28" x2="-25" y2="-17"/>
@@ -70,7 +70,7 @@
       <line x1="-105" y1="6" x2="-35" y2="13"/>
     </g>
 
-    <!-- Text / Content Lines on Right Page -->
+    <!-- Content Lines on Right Page -->
     <g stroke="#64748b" stroke-width="3" stroke-linecap="round" opacity="0.65">
       <line x1="25" y1="-32" x2="115" y2="-45"/>
       <line x1="25" y1="-17" x2="115" y2="-28"/>
@@ -88,11 +88,5 @@
       <polygon points="-80,-95 -78,-87 -70,-85 -78,-83 -80,-75 -82,-83 -90,-85 -82,-87" transform="scale(0.8) translate(-15, -10)"/>
       <polygon points="85,-90 87,-83 94,-81 87,-79 85,-72 83,-79 76,-81 83,-83" transform="scale(0.8) translate(15, -10)"/>
     </g>
-  </g>
-
-  <!-- Title & Theme Badge -->
-  <g transform="translate(400, 385)">
-    <text x="0" y="0" fill="#f8fafc" font-family="Montserrat, sans-serif" font-weight="900" font-size="22" text-anchor="middle" letter-spacing="2">QUẢN LÝ THƯ VIỆN &#8226; LIBRARY MANAGEMENT</text>
-    <text x="0" y="24" fill="#94a3b8" font-family="Poppins, sans-serif" font-weight="500" font-size="13" text-anchor="middle">JavaFX &#8226; MySQL Database &#8226; Clean Architecture &amp; OOP</text>
   </g>
 </svg>
