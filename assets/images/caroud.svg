@@ -1,70 +1,78 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
   <defs>
-    <linearGradient id="bg-caroud" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0b132b"/>
-      <stop offset="100%" stop-color="#1c2541"/>
-    </linearGradient>
-    <linearGradient id="cyan-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <radialGradient id="bg-caro" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#070a13"/>
+    </radialGradient>
+    <linearGradient id="cyan-glow-c" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#0284c7"/>
     </linearGradient>
-    <linearGradient id="aws-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff9900"/>
-      <stop offset="100%" stop-color="#ea580c"/>
+    <linearGradient id="rose-glow-c" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="glow-c" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    <filter id="glow-neon" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
   </defs>
-  <rect width="800" height="450" fill="url(#bg-caroud)"/>
-  <g stroke="rgba(255,255,255,0.06)" stroke-width="1">
-    <line x1="50" y1="50" x2="750" y2="50"/>
-    <line x1="50" y1="150" x2="750" y2="150"/>
-    <line x1="50" y1="250" x2="750" y2="250"/>
-    <line x1="50" y1="350" x2="750" y2="350"/>
-    <line x1="150" y1="50" x2="150" y2="400"/>
-    <line x1="300" y1="50" x2="300" y2="400"/>
-    <line x1="450" y1="50" x2="450" y2="400"/>
-    <line x1="600" y1="50" x2="600" y2="400"/>
-  </g>
-  <!-- Caro Board Graphic -->
-  <g transform="translate(70, 90)">
-    <rect width="250" height="250" rx="16" fill="rgba(15, 23, 42, 0.85)" stroke="#38bdf8" stroke-width="2" filter="url(#glow-c)"/>
-    <path d="M83,0 V250 M166,0 V250 M0,83 H250 M0,166 H250" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
-    <!-- X moves -->
-    <path d="M26,26 L56,56 M56,26 L26,56" stroke="#38bdf8" stroke-width="6" stroke-linecap="round" filter="url(#glow-c)"/>
-    <path d="M109,109 L139,139 M139,109 L109,139" stroke="#38bdf8" stroke-width="6" stroke-linecap="round" filter="url(#glow-c)"/>
-    <!-- O moves -->
-    <circle cx="124" cy="41" r="16" fill="none" stroke="#f43f5e" stroke-width="5" filter="url(#glow-c)"/>
-    <circle cx="208" cy="124" r="16" fill="none" stroke="#f43f5e" stroke-width="5" filter="url(#glow-c)"/>
-    <circle cx="41" cy="208" r="16" fill="none" stroke="#f43f5e" stroke-width="5" filter="url(#glow-c)"/>
-  </g>
-  <!-- Architecture Visual -->
-  <g transform="translate(370, 75)">
-    <rect width="360" height="280" rx="20" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1.5"/>
-    <rect x="25" y="25" width="110" height="30" rx="6" fill="url(#aws-grad)"/>
-    <text x="80" y="45" fill="#111" font-family="Montserrat, sans-serif" font-weight="800" font-size="12" text-anchor="middle">AWS CLOUD</text>
-    <rect x="145" y="25" width="150" height="30" rx="6" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1"/>
-    <text x="220" y="45" fill="#38bdf8" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" text-anchor="middle">MICROSERVICES</text>
-    <!-- Nodes -->
-    <g transform="translate(25, 75)">
-      <rect x="0" y="0" width="145" height="50" rx="10" fill="#1e293b" stroke="#6366f1" stroke-width="1.5"/>
-      <text x="72" y="24" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Auth &amp; User Pod</text>
-      <text x="72" y="40" fill="#94a3b8" font-family="sans-serif" font-size="10" text-anchor="middle">JWT Security</text>
 
-      <rect x="165" y="0" width="145" height="50" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-      <text x="237" y="24" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Matchmaking Hub</text>
-      <text x="237" y="40" fill="#94a3b8" font-family="sans-serif" font-size="10" text-anchor="middle">Realtime WebSocket</text>
+  <rect width="800" height="450" fill="url(#bg-caro)"/>
 
-      <rect x="82" y="75" width="145" height="50" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
-      <text x="154" y="99" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Game Core Engine</text>
-      <text x="154" y="115" fill="#94a3b8" font-family="sans-serif" font-size="10" text-anchor="middle">Distributed State</text>
+  <!-- Ambient Light Orbs -->
+  <circle cx="280" cy="180" r="140" fill="#0284c7" opacity="0.15" filter="url(#glow-neon)"/>
+  <circle cx="520" cy="220" r="140" fill="#e11d48" opacity="0.12" filter="url(#glow-neon)"/>
 
-      <path d="M72,50 L154,75 M237,50 L154,75" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,4"/>
+  <!-- Center Caro Game Board Card -->
+  <g transform="translate(260, 60)">
+    <!-- Board Base Outer Glow -->
+    <rect x="0" y="0" width="280" height="280" rx="28" fill="rgba(15, 23, 42, 0.75)" stroke="rgba(56, 189, 248, 0.35)" stroke-width="2" filter="url(#glow-neon)"/>
+    
+    <!-- Grid Lines -->
+    <g stroke="rgba(255, 255, 255, 0.12)" stroke-width="3" stroke-linecap="round">
+      <line x1="93" y1="24" x2="93" y2="256"/>
+      <line x1="187" y1="24" x2="187" y2="256"/>
+      <line x1="24" y1="93" x2="256" y2="93"/>
+      <line x1="24" y1="187" x2="256" y2="187"/>
     </g>
-    <text x="25" y="235" fill="#a5b4fc" font-family="sans-serif" font-size="12">High Availability • Scalable Architecture • Team Leader</text>
-    <text x="25" y="255" fill="#64748b" font-family="sans-serif" font-size="11">Coursework @ UET Cloud Computing</text>
+
+    <!-- Caro Pieces: X and O -->
+    <!-- X 1 (Top-Left) -->
+    <g transform="translate(46, 46)" filter="url(#glow-neon)">
+      <line x1="-22" y1="-22" x2="22" y2="22" stroke="url(#cyan-glow-c)" stroke-width="8" stroke-linecap="round"/>
+      <line x1="22" y1="-22" x2="-22" y2="22" stroke="url(#cyan-glow-c)" stroke-width="8" stroke-linecap="round"/>
+    </g>
+
+    <!-- O 1 (Top-Center) -->
+    <circle cx="140" cy="46" r="22" fill="none" stroke="url(#rose-glow-c)" stroke-width="7" filter="url(#glow-neon)"/>
+
+    <!-- X 2 (Center) -->
+    <g transform="translate(140, 140)" filter="url(#glow-neon)">
+      <line x1="-26" y1="-26" x2="26" y2="26" stroke="#38bdf8" stroke-width="9" stroke-linecap="round"/>
+      <line x1="26" y1="-26" x2="-26" y2="26" stroke="#38bdf8" stroke-width="9" stroke-linecap="round"/>
+    </g>
+
+    <!-- O 2 (Center-Right) -->
+    <circle cx="234" cy="140" r="22" fill="none" stroke="url(#rose-glow-c)" stroke-width="7" filter="url(#glow-neon)"/>
+
+    <!-- O 3 (Bottom-Left) -->
+    <circle cx="46" cy="234" r="22" fill="none" stroke="url(#rose-glow-c)" stroke-width="7" filter="url(#glow-neon)"/>
+
+    <!-- X 3 (Bottom-Right) - Winning Line Accent -->
+    <g transform="translate(234, 234)" filter="url(#glow-neon)">
+      <line x1="-22" y1="-22" x2="22" y2="22" stroke="url(#cyan-glow-c)" stroke-width="8" stroke-linecap="round"/>
+      <line x1="22" y1="-22" x2="-22" y2="22" stroke="url(#cyan-glow-c)" stroke-width="8" stroke-linecap="round"/>
+    </g>
+
+    <!-- Winning Streak Glow Line (Diagonal) -->
+    <line x1="30" y1="30" x2="250" y2="250" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-dasharray="8,6" filter="url(#glow-neon)"/>
   </g>
-  <text x="400" y="415" fill="#f8fafc" font-family="Montserrat, sans-serif" font-weight="800" font-size="22" text-anchor="middle" letter-spacing="1.5">CAROUD : CLOUD-NATIVE CARO SYSTEM</text>
+
+  <!-- Title & Theme Badge -->
+  <g transform="translate(400, 385)">
+    <text x="0" y="0" fill="#f8fafc" font-family="Montserrat, sans-serif" font-weight="900" font-size="22" text-anchor="middle" letter-spacing="2">CAROUD &#8226; CỜ CARO TRỰC TUYẾN</text>
+    <text x="0" y="24" fill="#94a3b8" font-family="Poppins, sans-serif" font-weight="500" font-size="13" text-anchor="middle">Cloud-Native Microservices &#8226; Realtime WebSockets</text>
+  </g>
 </svg>

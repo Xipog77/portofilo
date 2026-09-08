@@ -1,53 +1,122 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
   <defs>
-    <linearGradient id="bg-defend" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#1e1b4b"/>
+    <radialGradient id="bg-game" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#241042"/>
+      <stop offset="55%" stop-color="#110724"/>
+      <stop offset="100%" stop-color="#060210"/>
+    </radialGradient>
+    <linearGradient id="controller-body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#090d16"/>
     </linearGradient>
-    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fbbf24"/>
-      <stop offset="100%" stop-color="#d97706"/>
+    <linearGradient id="purple-neon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#9333ea"/>
     </linearGradient>
-    <linearGradient id="ruby-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ef4444"/>
-      <stop offset="100%" stop-color="#991b1b"/>
+    <linearGradient id="cyan-btn" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
     </linearGradient>
+    <linearGradient id="pink-btn" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#db2777"/>
+    </linearGradient>
+    <filter id="glow-game" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
   </defs>
-  <rect width="800" height="450" fill="url(#bg-defend)"/>
-  <!-- Castle Fortress Silhouette -->
-  <g transform="translate(100, 70)">
-    <!-- Tower Left -->
-    <rect x="20" y="90" width="80" height="170" fill="#334155" rx="4"/>
-    <polygon points="10,90 60,35 110,90" fill="url(#ruby-grad)"/>
-    <rect x="45" y="120" width="30" height="40" rx="15" fill="#0f172a"/>
-    <!-- Castle Wall -->
-    <rect x="100" y="140" width="160" height="120" fill="#475569"/>
-    <rect x="150" y="180" width="60" height="80" rx="30" fill="#0f172a"/>
-    <!-- Wall battlements -->
-    <rect x="105" y="125" width="25" height="15" fill="#475569"/>
-    <rect x="145" y="125" width="25" height="15" fill="#475569"/>
-    <rect x="190" y="125" width="25" height="15" fill="#475569"/>
-    <rect x="230" y="125" width="25" height="15" fill="#475569"/>
-    <!-- Tower Right -->
-    <rect x="260" y="90" width="80" height="170" fill="#334155" rx="4"/>
-    <polygon points="250,90 300,35 350,90" fill="url(#ruby-grad)"/>
-    <rect x="285" y="120" width="30" height="40" rx="15" fill="#0f172a"/>
-    <!-- Shield Insignia -->
-    <g transform="translate(150, 75)">
-      <path d="M30,0 L60,18 V55 C60,80 30,100 30,100 C30,100 0,80 0,55 V18 Z" fill="url(#gold-grad)"/>
-      <path d="M30,15 L30,80 M15,40 L45,40" stroke="#1e1b4b" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg-game)"/>
+
+  <!-- Ambient Gamer Lighting -->
+  <circle cx="300" cy="180" r="140" fill="#9333ea" opacity="0.18" filter="url(#glow-game)"/>
+  <circle cx="500" cy="180" r="140" fill="#06b6d4" opacity="0.15" filter="url(#glow-game)"/>
+
+  <!-- Iconic Gamepad / Controller -->
+  <g transform="translate(400, 185)">
+    <!-- Base Plate Shadow / Glow -->
+    <ellipse cx="0" cy="95" rx="150" ry="25" fill="#a855f7" opacity="0.25" filter="url(#glow-game)"/>
+
+    <!-- Controller Main Shell Outline & Fill -->
+    <path d="M -160,50 
+             C -175,-30 -120,-85 -40,-85 
+             C -15,-85 0,-70 0,-70 
+             C 0,-70 15,-85 40,-85 
+             C 120,-85 175,-30 160,50 
+             C 150,95 115,105 80,75 
+             C 50,50 35,45 0,55 
+             C -35,45 -50,50 -80,75 
+             C -115,105 -150,95 -160,50 Z" 
+          fill="url(#controller-body)" stroke="url(#purple-neon)" stroke-width="3.5" filter="url(#glow-game)"/>
+
+    <!-- Inner Grip Contours & Accent Lines -->
+    <path d="M -140,40 C -150,-10 -105,-60 -45,-65" fill="none" stroke="rgba(192, 132, 252, 0.4)" stroke-width="2"/>
+    <path d="M 140,40 C 150,-10 105,-60 45,-65" fill="none" stroke="rgba(192, 132, 252, 0.4)" stroke-width="2"/>
+
+    <!-- Left D-Pad (Directional Cross) -->
+    <g transform="translate(-75, -15)">
+      <rect x="-30" y="-10" width="60" height="20" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="2" filter="url(#glow-game)"/>
+      <rect x="-10" y="-30" width="20" height="60" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="2" filter="url(#glow-game)"/>
+      <circle cx="0" cy="0" r="5" fill="#38bdf8"/>
+      <!-- Direction Arrows -->
+      <polygon points="0,-22 -4,-16 4,-16" fill="#38bdf8"/>
+      <polygon points="0,22 -4,16 4,16" fill="#38bdf8"/>
+      <polygon points="-22,0 -16,-4 -16,4" fill="#38bdf8"/>
+      <polygon points="22,0 16,-4 16,4" fill="#38bdf8"/>
     </g>
+
+    <!-- Right Action Buttons (Diamond Layout) -->
+    <g transform="translate(75, -15)">
+      <!-- Top Button (Y) -->
+      <circle cx="0" cy="-24" r="10" fill="#1e293b" stroke="#facc15" stroke-width="2" filter="url(#glow-game)"/>
+      <text x="0" y="-20" fill="#facc15" font-family="Montserrat, sans-serif" font-weight="900" font-size="11" text-anchor="middle">Y</text>
+      <!-- Bottom Button (A) -->
+      <circle cx="0" cy="24" r="10" fill="#1e293b" stroke="#4ade80" stroke-width="2" filter="url(#glow-game)"/>
+      <text x="0" y="28" fill="#4ade80" font-family="Montserrat, sans-serif" font-weight="900" font-size="11" text-anchor="middle">A</text>
+      <!-- Left Button (X) -->
+      <circle cx="-24" cy="0" r="10" fill="#1e293b" stroke="url(#cyan-btn)" stroke-width="2" filter="url(#glow-game)"/>
+      <text x="-24" y="4" fill="#38bdf8" font-family="Montserrat, sans-serif" font-weight="900" font-size="11" text-anchor="middle">X</text>
+      <!-- Right Button (B) -->
+      <circle cx="24" cy="0" r="10" fill="#1e293b" stroke="url(#pink-btn)" stroke-width="2" filter="url(#glow-game)"/>
+      <text x="24" y="4" fill="#f472b6" font-family="Montserrat, sans-serif" font-weight="900" font-size="11" text-anchor="middle">B</text>
+    </g>
+
+    <!-- Left Analog Thumbstick -->
+    <g transform="translate(-35, 25)">
+      <circle cx="0" cy="0" r="22" fill="#0b0f19" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="16" fill="#1e293b" stroke="#c084fc" stroke-width="2" filter="url(#glow-game)"/>
+      <circle cx="0" cy="0" r="5" fill="#a855f7"/>
+    </g>
+
+    <!-- Right Analog Thumbstick -->
+    <g transform="translate(35, 25)">
+      <circle cx="0" cy="0" r="22" fill="#0b0f19" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="16" fill="#1e293b" stroke="#c084fc" stroke-width="2" filter="url(#glow-game)"/>
+      <circle cx="0" cy="0" r="5" fill="#a855f7"/>
+    </g>
+
+    <!-- Center Home / Castle Shield Emblem -->
+    <g transform="translate(0, -35)">
+      <circle cx="0" cy="0" r="14" fill="#090d16" stroke="url(#purple-neon)" stroke-width="2" filter="url(#glow-game)"/>
+      <!-- Shield / Castle Emblem -->
+      <path d="M -6,-7 L 6,-7 L 6,0 C 6,5 0,8 0,8 C 0,8 -6,5 -6,0 Z" fill="#c084fc"/>
+    </g>
+
+    <!-- Select / Start Small Buttons -->
+    <rect x="-24" y="-38" width="10" height="4" rx="2" fill="#64748b"/>
+    <rect x="14" y="-38" width="10" height="4" rx="2" fill="#64748b"/>
+
+    <!-- Upper Bumpers (L1/R1) -->
+    <path d="M -115,-76 C -95,-82 -60,-84 -42,-78" stroke="#a855f7" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+    <path d="M 42,-78 C 60,-84 95,-82 115,-76" stroke="#a855f7" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
   </g>
-  <!-- Technical Specifications Card -->
-  <g transform="translate(480, 85)">
-    <rect width="260" height="245" rx="16" fill="rgba(15, 23, 42, 0.85)" stroke="#ef4444" stroke-width="1.5"/>
-    <text x="25" y="40" fill="#f87171" font-family="Montserrat, sans-serif" font-size="16" font-weight="bold">C++ &amp; SDL2 ENGINE</text>
-    <text x="25" y="75" fill="#cbd5e1" font-family="sans-serif" font-size="13">• Custom 2D Game Engine</text>
-    <text x="25" y="105" fill="#cbd5e1" font-family="sans-serif" font-size="13">• Advanced Memory Management</text>
-    <text x="25" y="135" fill="#cbd5e1" font-family="sans-serif" font-size="13">• Dynamic Wave Spawning</text>
-    <text x="25" y="165" fill="#cbd5e1" font-family="sans-serif" font-size="13">• Performance Optimization</text>
-    <rect x="25" y="190" width="130" height="28" rx="6" fill="#b91c1c"/>
-    <text x="90" y="209" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Full-Stack Dev</text>
+
+  <!-- Title & Theme Badge -->
+  <g transform="translate(400, 385)">
+    <text x="0" y="0" fill="#f8fafc" font-family="Montserrat, sans-serif" font-weight="900" font-size="22" text-anchor="middle" letter-spacing="2">DEFEND KINGDOM &#8226; GAMEPAD &amp; STRATEGY</text>
+    <text x="0" y="24" fill="#94a3b8" font-family="Poppins, sans-serif" font-weight="500" font-size="13" text-anchor="middle">Java OOP Architecture &#8226; Tower Defense Engine &#8226; Custom Physics</text>
   </g>
-  <text x="400" y="415" fill="#f8fafc" font-family="Montserrat, sans-serif" font-weight="800" font-size="22" text-anchor="middle" letter-spacing="1.2">DEFEND THE KINGDOM : 2D TOWER DEFENSE GAME</text>
 </svg>
