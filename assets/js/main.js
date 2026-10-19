@@ -7,11 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Dynamic Typed Text Effect
   const typedTarget = document.querySelector('.typed-text');
   const roles = [
-    'Kỹ sư Thực tập sinh @ Viettel Networks',
-    'Student Researcher @ SATLab (VNU-UET)',
-    'Cloud Infrastructure & OpenStack / OVN Engineer',
-    'High-Concurrency Backend Developer (Go / C++ / Python)',
-    'Top Viettel Digital Talent 2026 (Cloud Track)'
+    'Cloud Engineer',
+    'Cloud Infrastructure & Networking',
+    'OpenStack & AWS Solution Architect',
+    'Distributed Systems Enthusiast'
   ];
 
   let roleIdx = 0;
@@ -48,111 +47,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
   typeRole();
 
-  // 2. Navbar Scrollspy & Scrolled state
-  const navbar = document.querySelector('.navbar');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('section[id]');
-  const navToggle = document.querySelector('.nav-toggle');
-  const navMenu = document.querySelector('.nav-menu');
+  // 2. Project Table Pagination
+  const tableRows = Array.from(document.querySelectorAll('.project-table-row'));
+  const prevBtn = document.getElementById('prevPageBtn');
+  const nextBtn = document.getElementById('nextPageBtn');
+  const pageNumbersContainer = document.getElementById('paginationNumbers');
+  const paginationInfo = document.getElementById('paginationInfo');
 
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY;
+  const ITEMS_PER_PAGE = 3;
+  let currentPage = 1;
 
-    // Toggle background blur on scroll
-    if (scrollPos > 60) {
-      navbar?.classList.add('scrolled');
-    } else {
-      navbar?.classList.remove('scrolled');
+  function renderTablePage() {
+    const totalItems = tableRows.length;
+    const totalPages = Math.max(1, Math.ceil(totalItems / ITEMS_PER_PAGE));
+
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalItems);
+
+    // Hide all rows first
+    tableRows.forEach(row => {
+      row.style.display = 'none';
+    });
+
+    // Show only rows for current page
+    tableRows.forEach((row, index) => {
+      if (index >= startIndex && index < endIndex) {
+        row.style.display = '';
+        row.style.animation = 'fadeInRow 0.25s ease forwards';
+      }
+    });
+
+    // Update pagination info label
+    if (paginationInfo) {
+      if (totalItems === 0) {
+        paginationInfo.textContent = 'Chưa có dự án';
+      } else {
+        paginationInfo.textContent = `Hiển thị ${startIndex + 1} - ${endIndex} trên tổng số ${totalItems} dự án`;
+      }
     }
 
-    // Update active nav link
-    let currentId = '';
-    sections.forEach(sec => {
-      const secTop = sec.offsetTop - 120;
-      const secHeight = sec.offsetHeight;
-      if (scrollPos >= secTop && scrollPos < secTop + secHeight) {
-        currentId = sec.getAttribute('id');
+    // Update Prev / Next buttons state
+    if (prevBtn) {
+      prevBtn.disabled = (currentPage <= 1);
+    }
+    if (nextBtn) {
+      nextBtn.disabled = (currentPage >= totalPages);
+    }
+
+    // Render numbered page buttons
+    if (pageNumbersContainer) {
+      pageNumbersContainer.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `pagination-num-btn ${i === currentPage ? 'active' : ''}`;
+        btn.textContent = i;
+        btn.setAttribute('aria-label', `Trang ${i}`);
+        btn.addEventListener('click', () => {
+          if (currentPage !== i) {
+            currentPage = i;
+            renderTablePage();
+          }
+        });
+        pageNumbersContainer.appendChild(btn);
       }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${currentId}`) {
-        link.classList.add('active');
-      }
-    });
-  });
-
-  // Mobile menu toggle
-  if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      const icon = navToggle.querySelector('i');
-      if (icon) {
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-xmark');
-      }
-    });
-
-    // Close menu when clicking link
-    navLinks.forEach(l => {
-      l.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-      });
-    });
-  }
-
-  // 3. Portfolio Filtering
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filterVal = btn.getAttribute('data-filter');
-
-      projectCards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category') || '';
-        if (filterVal === 'all' || cardCategory.includes(filterVal)) {
-          card.style.display = 'flex';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 50);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'scale(0.95)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 300);
-        }
-      });
-    });
-  });
-
-  // 4. Animate Skill Bars when in view
-  const skillBars = document.querySelectorAll('.skill-progress');
-  let animatedSkills = false;
-
-  function checkSkillBars() {
-    if (animatedSkills) return;
-    const skillsSection = document.getElementById('skills');
-    if (!skillsSection) return;
-
-    const rect = skillsSection.getBoundingClientRect();
-    if (rect.top <= window.innerHeight * 0.8) {
-      skillBars.forEach(bar => {
-        const targetWidth = bar.getAttribute('data-width') || '0%';
-        bar.style.width = targetWidth;
-      });
-      animatedSkills = true;
     }
   }
 
-  window.addEventListener('scroll', checkSkillBars);
-  checkSkillBars();
+  // Handle Prev button
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderTablePage();
+      }
+    });
+  }
+
+  // Handle Next button
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const totalPages = Math.ceil(tableRows.length / ITEMS_PER_PAGE);
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderTablePage();
+      }
+    });
+  }
+
+  // Initial render of the table
+  if (tableRows.length > 0) {
+    renderTablePage();
+  }
 
   // 5. Interactive Modal Viewer for Projects
   const modalBackdrop = document.getElementById('projectModal');
@@ -165,67 +154,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const projectDetails = {
     viettel_ovn: {
-      title: 'Giải Pháp Giám Sát Hạ Tầng Mạng OVN & Load Balancer OpenStack',
-      role: 'Kỹ sư Thực tập sinh @ Viettel Networks (Phòng Hạ tầng Cloud - VDT 2026)',
-      desc: 'Nghiên cứu cơ chế mạng ảo hóa OVN SDN và cân bằng tải phân tán Layer 4 trong nhân Linux (Octavia OVN Provider). Phát triển mô-đun custom exporter (Python 3) kết nối OVSDB JSON-RPC (TCP 6642), đọc bảng Service_Monitor, đo độ trễ đồng bộ (Sync Lag) và giám sát dung lượng phiên conntrack. Triển khai kiến trúc Hybrid Monitoring tích hợp VictoriaMetrics TSDB, vmagent (đệm đĩa WAL trạm biên), Alertmanager (bắn cảnh báo Telegram NOC < 8s) và Dashboard Grafana 3 tầng phân cấp. Thử nghiệm trên máy chủ Dell PowerEdge R650 25GbE đạt phụ tải CPU ≤ 1.2%, RAM ≈ 55MB, phát hiện lỗi backend trong 2.4s.',
-      tags: ['Viettel Networks', 'OpenStack Caracal', 'OVN SDN', 'Python 3', 'OVSDB JSON-RPC', 'Linux Conntrack', 'VictoriaMetrics', 'Grafana', 'Docker'],
+      title: 'OpenStack OVN & Load Balancer Monitoring',
+      role: 'Cloud Engineer — Viettel Digital Talent 2026',
+      desc: 'Phát triển giải pháp giám sát (observability) cho OpenStack OVN và OVN Load Balancers nhằm giải quyết khoảng trống trong giám sát và quản trị mạng. Triển khai các metric exporters, xử lý viễn trắc qua VictoriaMetrics Agent, và thiết lập hệ thống cảnh báo tự động cùng hệ thống dashboard Grafana trực quan, toàn diện.',
+      tags: ['Viettel Digital Talent 2026', 'OpenStack', 'OVN SDN', 'VictoriaMetrics Agent', 'Grafana', 'Python', 'Linux'],
       repo: 'https://github.com/Viettel-Digital-Talent-Program-2026/LB-OVN'
     },
-    vdt_cloud: {
-      title: 'OpenStack for Game Hosting (VDT 2026 Cloud Project)',
-      role: 'Cloud Architect & DevOps Developer',
-      desc: 'Hệ thống đám mây chuyên dụng tự động hóa cấp phát, quản lý vòng đời và điều phối tài nguyên máy chủ Dedicated Game Servers (Minecraft, CS2, Palworld) trên nền tảng Private Cloud. Tích hợp OpenStack (Keystone, Glance, Nova, Neutron, Cinder) với mạng ảo hóa OVN SDN (DVR Geneve tunnels) và hệ thống lưu trữ phân tán Ceph RBD (Copy-on-Write). Cung cấp Self-service Web Portal (Flask) cho phép khởi tạo máy chủ với Cloud-init tự động trong 1 click. Toàn bộ hạ tầng lab (Vagrant multi-node) được triển khai tự động hóa 100% bằng Ansible Playbook.',
-      tags: ['OpenStack', 'Ceph RBD', 'OVN DVR', 'Ansible Automation', 'Flask Portal', 'Cloud-init', 'Vagrant', 'KVM/QEMU'],
-      repo: 'https://github.com/Xipog77/VDT_cloud'
-    },
-    ticketrush: {
-      title: 'TicketRush — Nền Tảng Bán Vé Sự Kiện Tải Cao (High-Concurrency E-Ticketing)',
-      role: 'Backend & High-Concurrency Engineer',
-      desc: 'Nền tảng đặt vé trực tuyến được thiết kế đặc thù cho kịch bản "Flash Sale" — nơi hàng ngàn người dùng tranh vé đồng thời trong thời gian cực ngắn. Áp dụng Domain-Driven Design (DDD), hàng đợi ảo ưu tiên (Virtual Waiting Room Queue) trên Redis 7 để điều phối traffic spikes, cơ chế khóa hàng ở tầng cơ sở dữ liệu (Pessimistic Locking SELECT FOR UPDATE với PostgreSQL 15 & GORM) đảm bảo nguyên tử tính (Atomic Booking) tuyệt đối không bán trùng ghế. Cập nhật trạng thái sơ đồ ghế thời gian thực qua WebSockets và tự sinh mã vé QR số hóa an toàn.',
-      tags: ['Golang', 'Gin Framework', 'Redis 7 Virtual Queue', 'PostgreSQL 15', 'Pessimistic Locking', 'WebSockets', 'React 18', 'Docker'],
-      repo: 'https://github.com/sines05/TicketRush'
-    },
-    hododaman: {
-      title: 'Quản Lý Thông Tin Dòng Họ — Họ Đỗ Đàm An (Nam Định)',
-      role: 'Full-stack Web Architect',
-      desc: 'Nền tảng quản lý gia phả và số hóa lịch sử dòng họ hiện đại dành cho Họ Đỗ Đàm An (Hải Hậu, Nam Định). Ứng dụng React Flow (@xyflow/react) kết hợp thuật toán đồ thị phân cấp Dagre.js để biểu diễn sơ đồ tộc phả trực quan hỗ trợ tới 9+ đời con cháu với khả năng mở rộng/thu gọn đệ quy. Tích hợp hồ sơ thành viên tiểu sử chi tiết (trình soạn thảo TipTap rich-text), Bức tường Ký ức (Memory Wall), lịch sự kiện song song Dương lịch - Âm lịch, quản lý quỹ họ công khai minh bạch. Xây dựng trên nền tảng TanStack Start (React 19 SSR), Tailwind CSS v4, PostgreSQL trên Docker với Drizzle ORM.',
-      tags: ['TanStack Start (React 19)', 'Tailwind CSS v4', 'PostgreSQL', 'Drizzle ORM', 'React Flow', 'Dagre.js', 'TipTap Editor', 'Docker'],
-      repo: 'https://github.com/Xipog77/HoDoDamAn'
-    },
     caroud: {
-      title: 'Caroud — High-Availability Cloud-Native Caro Game',
-      role: 'Project Manager & Solution Architect (Nhóm 4)',
-      desc: 'Dẫn dắt thiết kế kiến trúc và triển khai nền tảng game Caro phân tán, tính sẵn sàng cao trên AWS Cloud. Phân rã hệ thống theo kiến trúc Microservices gồm các pod xác thực, matchmaking thời gian thực qua WebSocket và engine lưu trữ trạng thái bàn cờ phân tán với Redis. Điều hành toàn diện quy trình SDLC, thiết lập CI/CD và giám sát hệ thống.',
-      tags: ['AWS Cloud', 'Microservices', 'Docker', 'WebSockets', 'Redis', 'High Availability', 'Team Leader'],
+      title: 'Caroud — Cloud-Native Caro Game',
+      role: 'Project Manager & Solution Architect (2025)',
+      desc: 'Dẫn dắt phát triển nền tảng game Caro cloud-native độ sẵn sàng cao trên AWS theo kiến trúc microservices nhằm đảm bảo khả năng mở rộng. Quản lý nhóm 4 thành viên, bao quát toàn bộ vòng đời phát triển phần mềm (SDLC) trong khuôn khổ môn Điện toán Đám mây tại VNU-UET.',
+      tags: ['AWS Cloud', 'Microservices', 'Docker', 'WebSockets', 'Redis', 'High Availability', 'SDLC'],
       repo: 'https://github.com/Xipog77/Caroud'
     },
+    library: {
+      title: 'Library Management System',
+      role: 'Frontend Developer (2024)',
+      desc: 'Thiết kế và xây dựng giao diện ứng dụng quản lý thư viện trực quan bằng JavaFX và CSS, tích hợp cơ sở dữ liệu MySQL lưu trữ và truy vấn dữ liệu hiệu quả. Phối hợp cùng nhóm 3 thành viên hiện thực hóa các nguyên lý lập trình hướng đối tượng (OOP) cốt lõi.',
+      tags: ['Java', 'JavaFX', 'CSS', 'MySQL', 'OOP Principles'],
+      repo: 'https://github.com/Xipog77/Library_management'
+    },
+    defend: {
+      title: 'Defend the Kingdom — 2D Tower Defense Game',
+      role: 'Full-stack Developer (2023)',
+      desc: 'Phát triển hoàn chỉnh trò chơi thủ thành 2D từ đầu bằng C++ và thư viện đồ họa SDL2. Hiện thực logic trò chơi phức tạp, áp dụng các kỹ thuật quản lý bộ nhớ nâng cao và tối ưu hóa hiệu năng chuyên sâu.',
+      tags: ['C++', 'SDL2', 'Game Engine', 'Memory Management', 'Performance Optimization'],
+      repo: 'https://github.com/Xipog77/Defend-the-Kingdom'
+    },
     hcorap: {
-      title: 'HCORAP — Enhanced SAT-based Framework for Home Care Resource Allocation',
-      role: 'Student Researcher @ SATLab (VNU-UET)',
-      desc: 'Đề tài nghiên cứu tối ưu hóa tổ hợp trong lĩnh vực y tế gia đình. Mô hình hóa bài toán điều phối nhân lực và phương tiện y tế thành công thức mệnh đề SAT. Triển khai các ràng buộc phá vỡ đối xứng (symmetry-breaking constraints) và giải thuật giải SAT gia tăng (incremental SAT solving) giúp thu hẹp 68% không gian tìm kiếm và tăng tốc độ hội tụ nghiệm tối ưu.',
-      tags: ['SAT Solver', 'Combinatorial Optimization', 'Python', 'Algorithms', 'SATLab'],
+      title: 'Continuity-First Lexicographic Optimization for Home-Care Resource Allocation',
+      role: 'Student Researcher @ SATLab (VNU-UET) — Accepted at ICIIT 2027',
+      desc: 'Công trình nghiên cứu được chấp nhận tại Hội thảo quốc tế ICIIT 2027 (The 12th International Conference on Intelligent Information Technology). Giới thiệu mô hình LEX-COS (lexicographic MaxSAT) cho bài toán HCORAP, ưu tiên duy trì tính liên tục của người chăm sóc và giảm thiểu giờ làm thêm trước khi tối ưu độ tương thích giữa nhân viên và dịch vụ.',
+      tags: ['ICIIT 2027', 'SATLab', 'Lexicographic MaxSAT', 'HCORAP', 'Combinatorial Optimization', 'Python'],
       repo: 'https://github.com/Xipog77/HCORAP'
     },
     ralb: {
-      title: 'RALB — SAT-driven Optimization for Robotic Assembly Line Balancing',
+      title: 'SAT-driven Optimization for Robotic Assembly Line Balancing (RALB)',
       role: 'Student Researcher @ SATLab (VNU-UET)',
-      desc: 'Nghiên cứu mô hình giải chính xác dựa trên SAT cho bài toán cân bằng dây chuyền lắp ráp bằng cánh tay robot (RALB). Mô hình hóa các ràng buộc trạm làm việc, thứ tự công đoạn và gán công cụ robot thành logic mệnh đề, đạt được sự phân bổ khối lượng công việc tối ưu giữa các trạm sản xuất.',
-      tags: ['SATLab Research', 'Robotics Line Balancing', 'Constraint Programming', 'Optimization'],
+      desc: 'Đề xuất phương pháp tiếp cận đột phá dựa trên bộ giải SAT cho bài toán cân bằng dây chuyền lắp ráp bằng robot trong môi trường công nghiệp, tối ưu hóa phân bổ công đoạn sản xuất và năng suất.',
+      tags: ['SATLab Research', 'Robotics Line Balancing', 'SAT Solver', 'Constraint Programming'],
       repo: 'https://github.com/Xipog77/RALB'
-    },
-    defend: {
-      title: 'Defend the Kingdom — 2D Tower Defense Game Engine',
-      role: 'Full-stack Game Developer',
-      desc: 'Tự lập trình toàn bộ game thủ thành 2D từ đầu bằng C++ hiện đại và SDL2. Thiết kế vòng lặp game loop tùy chỉnh, giải thuật tìm đường đường đi của quái vật, cơ chế va chạm vật lý và quản trị bộ nhớ thủ công tối ưu hóa hiệu năng.',
-      tags: ['C++', 'SDL2', 'Game Engine', 'Memory Management', 'Data Structures'],
-      repo: 'https://github.com/Xipog77/Defend-the-Kingdom'
-    },
-    library: {
-      title: 'Library Management System — JavaFX & MySQL',
-      role: 'Frontend Developer (Nhóm 3)',
-      desc: 'Xây dựng giao diện ứng dụng desktop quản lý thư viện bằng JavaFX và CSS mô-đun hóa. Kết nối cơ sở dữ liệu MySQL lưu trữ thông tin sách, độc giả và mượn trả, tuân thủ nghiêm ngặt các mẫu thiết kế hướng đối tượng (OOP).',
-      tags: ['Java', 'JavaFX', 'CSS', 'MySQL', 'OOP Design'],
-      repo: 'https://github.com/Xipog77/Library_management'
     }
   };
 
@@ -267,56 +235,63 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Contact Form Handling (GitHub Pages Static Compatible)
-  const contactForm = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+  // 4. Quick Inline Copy Feature (Email & Phone)
+  function setupCopyButton(btn, textToCopy) {
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
+      const origHTML = btn.innerHTML;
 
-      const name = document.getElementById('contactName')?.value.trim();
-      const email = document.getElementById('contactEmail')?.value.trim();
-      const subject = document.getElementById('contactSubject')?.value.trim() || 'Thư liên hệ từ website portfolio';
-      const message = document.getElementById('contactMessage')?.value.trim();
-
-      if (!name || !email || !message) {
-        if (formStatus) {
-          formStatus.textContent = 'Vui lòng điền đầy đủ họ tên, email và nội dung tin nhắn!';
-          formStatus.className = 'form-status-msg error';
+      function showCopied() {
+        btn.classList.add('copied');
+        const hasTextSpan = btn.querySelector('.copy-text');
+        if (hasTextSpan) {
+          btn.innerHTML = '<i class="fa-solid fa-check"></i> <span class="copy-text">Đã chép!</span>';
+        } else {
+          btn.innerHTML = '<i class="fa-solid fa-check"></i>';
         }
-        return;
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = origHTML;
+        }, 2000);
       }
 
-      // Compose mailto link
-      const mailtoUrl = `mailto:dongockhanh.vn@gmail.com?subject=${encodeURIComponent(subject + ' - từ ' + name)}&body=${encodeURIComponent(
-        `Họ tên: ${name}\nEmail: ${email}\n\nNội dung:\n${message}`
-      )}`;
-
-      if (formStatus) {
-        formStatus.innerHTML = `Cảm ơn bạn! Đang mở ứng dụng email của bạn để gửi trực tiếp tới <strong>dongockhanh.vn@gmail.com</strong>...`;
-        formStatus.className = 'form-status-msg success';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(textToCopy)
+          .then(showCopied)
+          .catch(() => fallbackCopy(textToCopy, showCopied));
+      } else {
+        fallbackCopy(textToCopy, showCopied);
       }
-
-      setTimeout(() => {
-        window.location.href = mailtoUrl;
-      }, 600);
     });
   }
 
-  // 7. Quick Copy Email Feature
-  const copyEmailBtns = document.querySelectorAll('.copy-email-btn');
-  copyEmailBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const email = 'dongockhanh.vn@gmail.com';
-      navigator.clipboard.writeText(email).then(() => {
-        const origText = btn.innerHTML;
-        btn.innerHTML = '<i class="fa-solid fa-check"></i> Đã sao chép!';
-        setTimeout(() => {
-          btn.innerHTML = origText;
-        }, 2000);
-      });
-    });
+  function fallbackCopy(text, callback) {
+    const tempInput = document.createElement('textarea');
+    tempInput.value = text;
+    tempInput.setAttribute('readonly', '');
+    tempInput.style.position = 'fixed';
+    tempInput.style.left = '-9999px';
+    tempInput.style.top = '0';
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999);
+    try {
+      const successful = document.execCommand('copy');
+      if (successful) callback();
+    } catch (err) {
+      console.error('Fallback copy failed:', err);
+    }
+    document.body.removeChild(tempInput);
+  }
+
+  // Setup Email copy buttons
+  document.querySelectorAll('.copy-email-btn').forEach(btn => {
+    setupCopyButton(btn, 'dongockhanh.vn@gmail.com');
+  });
+
+  // Setup Phone copy buttons
+  document.querySelectorAll('.copy-phone-btn').forEach(btn => {
+    setupCopyButton(btn, '+84365639805');
   });
 });
