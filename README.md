@@ -1,6 +1,6 @@
-## Trang web giới thiệu thông tin cá nhân và portfolio của tôi.
+# Trang web giới thiệu thông tin cá nhân và portfolio của tôi.
 
----
+     👉 `https://Xipog77.github.io/portofilo/`
 
 ## Cấu Trúc Thư Mục
 

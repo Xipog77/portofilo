@@ -13,6 +13,15 @@
     content="Đỗ Ngọc Khánh, Do Ngoc Khanh, Cloud Engineer, OpenStack, AWS, OVN, Viettel Digital Talent, SATLab, ICIIT 2027, VNU-UET, Networking">
   <meta name="author" content="Đỗ Ngọc Khánh">
 
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://Xipog77.github.io/portofilo/">
+  <meta property="og:title" content="Đỗ Ngọc Khánh | Portfolio — Cloud Engineer">
+  <meta property="og:description"
+    content="Portfolio cá nhân của Đỗ Ngọc Khánh - Cloud Engineer, Nghiên cứu viên SATLab, Viettel Digital Talent 2026.">
+  <meta property="og:image" content="https://Xipog77.github.io/portofilo/assets/images/profile.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
 
@@ -27,12 +36,106 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="./assets/css/style.css?v=2.1">
+  <link rel="stylesheet" href="./assets/css/style.css?v=3.8">
 </head>
 
 <body>
 
-  <!-- 1. About Section (Primary Opening View) -->
+  <!-- Top Scroll Reading Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
+  <!-- Page Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-ring"></div>
+      <span class="preloader-text">DNK</span>
+    </div>
+  </div>
+
+
+  <!-- Floating Side Navigation (Docked on Right with ScrollSpy & Hover Tooltip) -->
+  <nav class="side-nav" id="sideNav" aria-label="Điều hướng nhanh trang cá nhân">
+    <a href="#home" class="side-nav-item active" data-section="home" aria-label="Trang chủ">
+      <span class="side-nav-icon"><i class="fa-solid fa-house"></i></span>
+      <span class="side-nav-tooltip">Trang Chủ</span>
+      <span class="side-nav-pip"></span>
+    </a>
+    <a href="#about" class="side-nav-item" data-section="about" aria-label="Giới thiệu">
+      <span class="side-nav-icon"><i class="fa-solid fa-user"></i></span>
+      <span class="side-nav-tooltip">Giới Thiệu</span>
+      <span class="side-nav-pip"></span>
+    </a>
+    <a href="#experience" class="side-nav-item" data-section="experience" aria-label="Học vấn">
+      <span class="side-nav-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+      <span class="side-nav-tooltip">Học Vấn</span>
+      <span class="side-nav-pip"></span>
+    </a>
+    <a href="#portfolio" class="side-nav-item" data-section="portfolio" aria-label="Kinh nghiệm & Dự án">
+      <span class="side-nav-icon"><i class="fa-solid fa-briefcase"></i></span>
+      <span class="side-nav-tooltip">Kinh Nghiệm</span>
+      <span class="side-nav-pip"></span>
+    </a>
+    <a href="#skills-awards" class="side-nav-item" data-section="skills-awards" aria-label="Thành tích & Kỹ năng">
+      <span class="side-nav-icon"><i class="fa-solid fa-award"></i></span>
+      <span class="side-nav-tooltip">Thành Tích</span>
+      <span class="side-nav-pip"></span>
+    </a>
+    <a href="#contact" class="side-nav-item" data-section="contact" aria-label="Liên hệ">
+      <span class="side-nav-icon"><i class="fa-solid fa-paper-plane"></i></span>
+      <span class="side-nav-tooltip">Liên Hệ</span>
+      <span class="side-nav-pip"></span>
+    </a>
+  </nav>
+
+  <!-- 0. Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-glow-sphere hero-glow-1"></div>
+    <div class="hero-glow-sphere hero-glow-2"></div>
+
+    <div class="container hero-content">
+      <div class="hero-greeting">
+        <i class="fa-solid fa-terminal"></i> Xin chào, tôi là
+      </div>
+
+      <h1 class="hero-title">
+        <span>ĐỖ NGỌC KHÁNH</span>
+      </h1>
+
+      <div class="hero-typed-wrapper">
+        <span class="typed-prefix">→</span>
+        <span class="typed-text"></span>
+        <span class="typed-cursor">|</span>
+      </div>
+
+      <p class="hero-description">
+        Sinh viên năm 4 tại VNU-UET chuyên ngành Mạng máy tính và Truyền thông dữ liệu.
+        Thực tập sinh Cloud Engineer tại Viettel Networks. Nghiên cứu sinh SATLab.
+      </p>
+
+      <div class="hero-actions">
+        <a href="./assets/docs/cv-llt.pdf" target="_blank" class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i>
+          Xem CV</a>
+      </div>
+
+      <div class="hero-social-links">
+        <a href="https://github.com/Xipog77" target="_blank" rel="noopener noreferrer" class="social-icon-btn"
+          title="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/dokhanh253/" target="_blank" rel="noopener noreferrer"
+          class="social-icon-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/okhanh.634277" target="_blank" rel="noopener noreferrer"
+          class="social-icon-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="mailto:dongockhanh.vn@gmail.com" class="social-icon-btn" title="Email"><i
+            class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+
+    <!-- Wave divider -->
+    <svg class="wave wave-bottom" viewBox="0 0 1440 40" preserveAspectRatio="none">
+      <path class="fill-light" d="M0,20 C360,45 720,0 1080,25 C1260,35 1380,15 1440,20 L1440,40 L0,40 Z"></path>
+    </svg>
+  </section>
+
+  <!-- 1. About Section -->
   <section id="about" class="about-section">
     <div class="container">
       <div class="section-header">
@@ -48,27 +151,22 @@
             <div class="roots-highlight">
               <p>
                 <i class="fa-solid fa-earth-asia" style="color: var(--primary); margin-right: 8px;"></i>
-                Tôi sinh ra và lớn lên tại vùng đất mỏ <strong>Quảng Ninh</strong>, nơi đã dạy cho tôi sự cần cù và kỷ
-                luật. Theo học và trưởng thành tại
-                <strong>Hà Nội</strong>, tôi đã được tiếp cận với nền giáo dục tiên tiến và môi trường học tập
-                năng động, nơi tôi đã trau dồi kiến thức và rèn luyện kỹ năng để theo đuổi đam mê trở thành một kỹ sư
-                Cloud.
+                Lớn lên từ vùng đất mỏ <strong>Quảng Ninh</strong>, tôi được rèn giũa sự bền bỉ, cần cù và tính kỷ luật.
+                Đến <strong>Hà Nội</strong>, được trải nghiệm môi trường học thuật đầy năng động tại VNU-UET đem lại cho
+                tôi một nền tảng kiến thức vững vàng cùng mong muốn được trở thành một kỹ sư Cloud.
               </p>
             </div>
 
             <p>
-              Tôi đam mê nghiên cứu sâu vào bản chất kiến trúc hệ thống và tìm thấy niềm vui trong việc tìm hiểu
-              cách thức hoạt động của các thành phần cốt lõi và cách chúng tương tác với nhau để tạo thành một hệ
-              thống hoàn chỉnh.
+              Tôi thường đào sâu vào nghiên cứu kiến trúc hệ thống và các công nghệ mới. Với tôi, niềm vui lớn nhất
+              trong nghiên cứu và phát triển là bóc tách các bài toán phức tạp và biến chúng thành giải pháp tối
+              ưu.
             </p>
 
             <p>
-              Thời gian tích cực tham gia các hoạt động của khoa và trường, tôi đã xây dựng được kỹ năng lãnh đạo, thấu
-              hiểu và làm việc nhóm. Đồng thời rèn luyện được tính kỉ luật, tinh thần trách nhiệm và khả năng giải quyết
-              vấn đề.
-
-              Trong công việc, tôi là người có tính kỷ luật, tinh thần trách nhiệm, ham học hỏi và có khả tư duy phân
-              tích tốt.
+              Trải qua quá trình học tập và làm việc, tôi rèn luyện cho mình tư duy logic, kỹ năng lập kế hoạch và giải
+              quyết vấn đề. Trong mọi công việc, tôi luôn giữ thái độ cầu thị, tinh thần trách nhiệm , chủ động và không
+              ngừng học hỏi để phát triển bản thân.
             </p>
 
 
@@ -319,9 +417,9 @@
               <table class="project-compact-table">
                 <thead>
                   <tr>
-                    <th style="width: 52%;">Projects</th>
-                    <th style="width: 30%;">Role / Year</th>
-                    <th style="width: 18%; text-align: right;">Info</th>
+                    <th style="width: 54%;">Projects</th>
+                    <th style="width: 30%;">Role</th>
+                    <th style="width: 16%; text-align: right;">Year</th>
                   </tr>
                 </thead>
                 <tbody id="projectTableBody">
@@ -344,18 +442,15 @@
                     <td>
                       <div class="table-role-text" style="color: #ee0033;"><i class="fa-solid fa-tower-broadcast"></i>
                         Cloud Engineer</div>
-                      <div class="table-sub-text">Viettel &bull; 2026</div>
+                      <div class="table-sub-text">Viettel</div>
                     </td>
                     <td class="text-right">
-                      <div class="table-action-group">
+                      <div class="table-year-action-group">
+                        <span class="table-year-text">2026</span>
                         <a href="https://github.com/Viettel-Digital-Talent-Program-2026/LB-OVN" target="_blank"
                           rel="noopener noreferrer" class="table-action-icon-btn" title="GitHub Repo">
                           <i class="fa-brands fa-github"></i>
                         </a>
-                        <button type="button" class="table-action-icon-btn open-modal-btn" data-project="viettel_ovn"
-                          title="Chi tiết dự án">
-                          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
                       </div>
                     </td>
                   </tr>
@@ -381,18 +476,15 @@
                         Project Manager</div>
                       <div class="table-role-text" style="color: var(--primary);"><i class="fa-solid fa-cloud"></i>
                         Cloud Engineer</div>
-                      <div class="table-sub-text">VNU-UET &bull; 2025</div>
+                      <div class="table-sub-text">VNU-UET</div>
                     </td>
                     <td class="text-right">
-                      <div class="table-action-group">
+                      <div class="table-year-action-group">
+                        <span class="table-year-text">2025</span>
                         <a href="https://github.com/Xipog77/Caroud" target="_blank" rel="noopener noreferrer"
                           class="table-action-icon-btn" title="GitHub Repo">
                           <i class="fa-brands fa-github"></i>
                         </a>
-                        <button type="button" class="table-action-icon-btn open-modal-btn" data-project="caroud"
-                          title="Chi tiết dự án">
-                          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
                       </div>
                     </td>
                   </tr>
@@ -415,18 +507,15 @@
                     <td>
                       <div class="table-role-text" style="color: var(--accent-emerald);"><i
                           class="fa-solid fa-desktop"></i> Frontend Dev</div>
-                      <div class="table-sub-text">VNU-UET &bull; 2024</div>
+                      <div class="table-sub-text">VNU-UET</div>
                     </td>
                     <td class="text-right">
-                      <div class="table-action-group">
+                      <div class="table-year-action-group">
+                        <span class="table-year-text">2024</span>
                         <a href="https://github.com/Xipog77/Library_management" target="_blank"
                           rel="noopener noreferrer" class="table-action-icon-btn" title="GitHub Repo">
                           <i class="fa-brands fa-github"></i>
                         </a>
-                        <button type="button" class="table-action-icon-btn open-modal-btn" data-project="library"
-                          title="Chi tiết dự án">
-                          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
                       </div>
                     </td>
                   </tr>
@@ -448,18 +537,15 @@
                     <td>
                       <div class="table-role-text" style="color: var(--accent-amber);"><i
                           class="fa-solid fa-gamepad"></i> Full-stack Dev</div>
-                      <div class="table-sub-text">VNU-UET &bull; 2023</div>
+                      <div class="table-sub-text">VNU-UET</div>
                     </td>
                     <td class="text-right">
-                      <div class="table-action-group">
+                      <div class="table-year-action-group">
+                        <span class="table-year-text">2023</span>
                         <a href="https://github.com/Xipog77/Defend-the-Kingdom" target="_blank"
                           rel="noopener noreferrer" class="table-action-icon-btn" title="GitHub Repo">
                           <i class="fa-brands fa-github"></i>
                         </a>
-                        <button type="button" class="table-action-icon-btn open-modal-btn" data-project="defend"
-                          title="Chi tiết dự án">
-                          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
                       </div>
                     </td>
                   </tr>
@@ -469,7 +555,7 @@
                     <td>
                       <div class="table-project-name">
                         <span class="table-project-title">HCORAP Optimization</span>
-                        <span class="table-badge badge-research">Researchu</span>
+                        <span class="table-badge badge-research">Research</span>
                       </div>
                       <p class="table-project-summary">Mô hình Lexicographic MaxSAT cho bài toán lập lịch cho điều dưỡng
                         y tế tại nhà.</p>
@@ -483,18 +569,15 @@
                     <td>
                       <div class="table-role-text" style="color: var(--accent-purple);"><i
                           class="fa-solid fa-scroll"></i> Researcher</div>
-                      <div class="table-sub-text">VNU-UET &bull; 2026</div>
+                      <div class="table-sub-text">VNU-UET</div>
                     </td>
                     <td class="text-right">
-                      <div class="table-action-group">
+                      <div class="table-year-action-group">
+                        <span class="table-year-text">2026</span>
                         <a href="https://github.com/Xipog77/HCORAP" target="_blank" rel="noopener noreferrer"
                           class="table-action-icon-btn" title="GitHub Repo">
                           <i class="fa-brands fa-github"></i>
                         </a>
-                        <button type="button" class="table-action-icon-btn open-modal-btn" data-project="hcorap"
-                          title="Chi tiết đề tài">
-                          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
                       </div>
                     </td>
                   </tr>
@@ -517,18 +600,15 @@
                     <td>
                       <div class="table-role-text" style="color: var(--accent-purple);"><i
                           class="fa-solid fa-robot"></i> Researcher</div>
-                      <div class="table-sub-text">VNU-UET &bull; 2025</div>
+                      <div class="table-sub-text">VNU-UET</div>
                     </td>
                     <td class="text-right">
-                      <div class="table-action-group">
+                      <div class="table-year-action-group">
+                        <span class="table-year-text">2025</span>
                         <a href="https://github.com/Xipog77/RALB" target="_blank" rel="noopener noreferrer"
                           class="table-action-icon-btn" title="GitHub Repo">
                           <i class="fa-brands fa-github"></i>
                         </a>
-                        <button type="button" class="table-action-icon-btn open-modal-btn" data-project="ralb"
-                          title="Chi tiết đề tài">
-                          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
                       </div>
                     </td>
                   </tr>
@@ -538,7 +618,8 @@
 
             <!-- Table Pagination Bar -->
             <div class="project-table-pagination-bar">
-              <span class="pagination-info" id="paginationInfo">Hiển thị 1 - 3 trên tổng 6 dự án</span>
+              <span class="pagination-info" id="paginationInfo"></span>
+              <!-- <span class="pagination-info" id="paginationInfo">Hiển thị 1 - 3 trên tổng 6 dự án</span> -->
               <div class="pagination-controls" id="paginationControls">
                 <button type="button" class="pagination-btn" id="prevPageBtn" aria-label="Trang trước" disabled>
                   <i class="fa-solid fa-chevron-left"></i>
@@ -828,32 +909,101 @@
     </div>
   </section>
 
-  <!-- Project Details Modal Backdrop -->
-  <div id="projectModal" class="modal-backdrop">
-    <div class="modal-box">
-      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
-      <h3 id="modalTitle" style="font-size: 1.45rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main);">
-        Tiêu đề dự án</h3>
-      <div id="modalRole" style="font-size: 0.92rem; font-weight: 600; color: var(--primary); margin-bottom: 16px;">Vai
-        trò</div>
-      <p id="modalDesc" style="color: #475569; font-size: 0.98rem; line-height: 1.7; margin-bottom: 20px;">Mô tả chi
-        tiết dự án...</p>
 
-      <div style="margin-bottom: 24px;">
-        <h4 style="font-size: 0.88rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;">Công
-          Nghệ Sử Dụng</h4>
-        <div id="modalTags" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+  <!-- Command Palette Modal (Ctrl + K) -->
+  <div id="cmdPalette" class="cmd-palette-backdrop" role="dialog" aria-modal="true" aria-label="Command Menu">
+    <div class="cmd-palette-box">
+      <div class="cmd-input-wrap">
+        <i class="fa-solid fa-magnifying-glass cmd-search-icon"></i>
+        <input type="text" id="cmdSearchInput" class="cmd-input"
+          placeholder="Gõ để tìm nhanh mục, dự án, hoặc tác vụ..." autocomplete="off">
+        <span class="cmd-esc-badge">ESC</span>
       </div>
 
-      <a id="modalRepo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary"
-        style="display: inline-flex;">
-        <i class="fa-brands fa-github"></i> Xem Kho Lưu Trữ Trên GitHub &rarr;
-      </a>
+      <div class="cmd-list" id="cmdList">
+        <!-- Dynamically populated or rendered items -->
+        <div class="cmd-group-title">Điều hướng nhanh</div>
+        <a href="#home" class="cmd-item" data-action="navigate">
+          <i class="fa-solid fa-house"></i>
+          <span class="cmd-item-label">Trang Chủ (Hero)</span>
+          <span class="cmd-item-hint">Nhảy đến</span>
+        </a>
+        <a href="#about" class="cmd-item" data-action="navigate">
+          <i class="fa-solid fa-user"></i>
+          <span class="cmd-item-label">Giới Thiệu (About Me &amp; Story)</span>
+          <span class="cmd-item-hint">Nhảy đến</span>
+        </a>
+        <a href="#experience" class="cmd-item" data-action="navigate">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span class="cmd-item-label">Học Vấn (UET &amp; SATLab)</span>
+          <span class="cmd-item-hint">Nhảy đến</span>
+        </a>
+        <a href="#portfolio" class="cmd-item" data-action="navigate">
+          <i class="fa-solid fa-briefcase"></i>
+          <span class="cmd-item-label">Kinh Nghiệm &amp; Dự Án (Works)</span>
+          <span class="cmd-item-hint">Nhảy đến</span>
+        </a>
+        <a href="#skills-awards" class="cmd-item" data-action="navigate">
+          <i class="fa-solid fa-award"></i>
+          <span class="cmd-item-label">Kỹ Năng &amp; Thành Tích (Awards)</span>
+          <span class="cmd-item-hint">Nhảy đến</span>
+        </a>
+        <a href="#contact" class="cmd-item" data-action="navigate">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span class="cmd-item-label">Liên Hệ (Get In Touch)</span>
+          <span class="cmd-item-hint">Nhảy đến</span>
+        </a>
+
+        <div class="cmd-group-title">Tác vụ nhanh</div>
+        <div class="cmd-item" data-action="theme">
+          <i class="fa-solid fa-circle-half-stroke"></i>
+          <span class="cmd-item-label">Chuyển Giao Diện (Sáng / Tối)</span>
+          <span class="cmd-item-hint">Action</span>
+        </div>
+        <a href="./assets/docs/cv-llt.pdf" target="_blank" class="cmd-item" data-action="download-cv">
+          <i class="fa-solid fa-file-pdf"></i>
+          <span class="cmd-item-label">Xem &amp; Tải CV (PDF)</span>
+          <span class="cmd-item-hint">Mở file</span>
+        </a>
+        <div class="cmd-item" data-action="copy-email">
+          <i class="fa-solid fa-copy"></i>
+          <span class="cmd-item-label">Sao Chép Email: dongockhanh.vn@gmail.com</span>
+          <span class="cmd-item-hint">Copy</span>
+        </div>
+        <a href="https://github.com/Xipog77" target="_blank" rel="noopener noreferrer" class="cmd-item"
+          data-action="external">
+          <i class="fa-brands fa-github"></i>
+          <span class="cmd-item-label">Trang GitHub cá nhân (@Xipog77)</span>
+          <span class="cmd-item-hint">Mở link</span>
+        </a>
+        <a href="https://www.linkedin.com/in/dokhanh253/" target="_blank" rel="noopener noreferrer" class="cmd-item"
+          data-action="external">
+          <i class="fa-brands fa-linkedin"></i>
+          <span class="cmd-item-label">Trang LinkedIn cá nhân (dokhanh253)</span>
+          <span class="cmd-item-hint">Mở link</span>
+        </a>
+      </div>
+
+      <div class="cmd-footer">
+        <span>Dùng <kbd>↑</kbd> <kbd>↓</kbd> để di chuyển, <kbd>Enter</kbd> để chọn</span>
+      </div>
     </div>
   </div>
 
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Floating Action Buttons: Back to Top & Theme Toggle -->
+  <button id="backToTop" class="back-to-top-btn" aria-label="Quay về đầu trang" title="Lên đầu trang">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+  <button type="button" class="theme-toggle-btn" id="themeToggle" title="Chuyển đổi giao diện Sáng / Tối"
+    aria-label="Toggle dark mode">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+
   <!-- Scripts -->
-  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/main.js?v=3.8"></script>
 </body>
 
 </html>
